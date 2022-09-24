@@ -1,0 +1,23 @@
+import streamlit as st
+import seaborn as sns
+import pandas as pd
+import plotly.express as px
+
+# iris_data = load_iris()
+# labels = iris_data.feature_names
+# targets = iris_data.target
+# print(labels)
+# df_form = pd.DataFrame(iris_data.data, columns = labels)
+# df_form['targets'] = targets
+st.write("""
+# Iris Dataset
+How are the sizes of Iris different depending on the species?
+""")
+#pl_handle = px.scatter_3d(df_form, x = ['sepal_length'], y = ['sepal_width'], z = ['petal_width'], color = ["species"] )
+#st.plotly_chart(pl_handle)
+
+# streamlit run CMSE830HW1.py
+
+df_form = px.data.iris()
+fig = px.scatter_3d(df_form, x = 'sepal_length', y = 'sepal_width', z = 'petal_width', color='petal_length', symbol='species', size_max = 18, opacity=0.7)
+st.plotly_chart(fig)
